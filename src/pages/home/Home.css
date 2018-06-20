@@ -1,0 +1,104 @@
+.banner-wrapper{
+    height:300px;
+    overflow:hidden;
+}
+.banner-wrapper .banner-list{
+    width:100%;
+    height:100%;
+}
+.banner-wrapper .banner-list li{
+
+}
+.banner-wrapper img{
+    height:300px;
+    width:100%;
+}
+.main-home .content h3{
+    border-bottom:3px solid #7D26CD;
+    padding: 10px;
+    margin-bottom:10px;
+}
+.main-home .left{
+    width:900px;
+    margin-right:20px;
+}
+.main-home .right{
+    width:280px;
+}
+.main-home .reccomend-list{
+    margin-right:-15px;
+}
+.main-home .reccomend-list li{
+    padding: 10px;
+    width:290px;
+    float:left;
+    margin-right:15px;
+    box-sizing:border-box;
+    background:#fff;
+    margin-bottom:10px;
+}
+.main-home .reccomend-list li:hover img{
+    transform: scale(1.5);
+    transition: 2s all linear;
+}
+.main-home .reccomend-list li .avatar{
+    width:100%;
+    height:220px;
+    overflow:hidden;
+}
+.main-home .reccomend-list li .avatar img{
+    width:100%;
+    height:100%;
+}
+.main-home .reccomend-list li h5{
+    padding:8px 0;
+    font-weight:700;
+}
+.main-home .reccomend-list li p{
+    color:#666;
+    text-align:justify;
+}
+.main-home .newest li{
+    margin-bottom:10px;
+    background:#fff;
+    padding: 10px;
+}
+.main-home .newest .newest-list h5{
+    margin-bottom:10px;
+    font-weight:700;
+}
+.main-home .newest .newest-list .avatar{
+    float:left;
+    width:200px;
+    height:170px;
+    overflow:hidden;
+    margin-right:16px;
+}
+.main-home .newest .newest-list .avatar img{
+    width:100%;
+    height:100%;
+}
+.main-home .newest .newest-list .cont-intro{
+    line-height:30px;
+    color:#666;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.main-home .newest .newest-list .operate{
+    height:30px;
+    line-height:30px;
+    font-size:16px;
+    margin-top:10px;
+}
+.main-home .newest .newest-list .operate span{
+    margin-right:20px;
+}
+.main-home .newest .newest-list .operate .go-read{
+    float:right;
+    color:#096;
+    cursor: pointer;
+}

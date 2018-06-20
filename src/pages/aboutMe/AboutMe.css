@@ -1,0 +1,9 @@
+.portrait{
+    width:440px;
+    height:560px;
+    margin: 0 16px 7px 0;
+}
+.portrait img{
+    height:100%;
+    width:100%;
+}

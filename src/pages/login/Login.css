@@ -1,0 +1,94 @@
+.login-page{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background:url(../../common/image/login-bg.jpg) no-repeat center;
+    background-size: 100%;
+}
+.login-wrapper{
+    position:absolute;
+    width:400px;
+    height:600px;
+    background:#fff;
+    right:20%;
+    top:20%;
+    padding:10px;
+}
+.login-wrapper .welcome{
+    font-size:26px;
+    font-weight: 700;
+    text-align:center;
+    padding: 10px 0;
+}
+.login-others{
+    text-align:center;
+    margin-top:40px;
+}
+.login-others a{
+    display: inline-block;
+    width: 81px;
+    margin-left: 38px;
+    text-align: center;
+}
+.login-others i{
+    display:block;
+    height:82px;
+    width:82px;
+    background: url(http://icon.qiantucdn.com/images/login/login_v6.png) no-repeat;
+    margin-bottom:38px;
+}
+.login-others .qq{
+    margin-left:0;
+}
+.login-others .wx i{
+    background-position: -168px 0;
+}
+.login-others .wb i{
+    background-position: -84px 0;
+}
+.login-others .qq:hover i{
+background-position: 0 -84px;
+}
+.login-others .wx:hover i{
+    background-position: -168px -84px;
+}
+.login-others .wb:hover i{
+    background-position: -84px -84px;
+}
+.username-wrapper{
+    margin-bottom:20px;
+}
+.password-wrapper{
+    margin-bottom:20px;
+}
+.no-account button{
+    width:100%;
+}
+.login-reg{
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+.reg-tab,.login-tab{
+    width:50%;
+    text-align:center;
+    display: inline-block;
+}
+.reg-tab,.login-tab .login,.reg{
+    padding:20px;
+    cursor: pointer;
+}
+.login-reg .tabActive{
+    border-bottom:2px solid #10c55b;
+    color:#10c55b;
+}
+.login-page .text{
+    position: fixed;
+    left:60px;
+    top:20%;
+    color:#fff;
+}
+
+

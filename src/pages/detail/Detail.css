@@ -1,0 +1,29 @@
+.detail h3{
+    text-align:center;
+    margin-bottom:10px;
+}
+.detail .author-info{
+    color:#666;
+    margin-bottom:6px;
+    font-size:12px;
+}
+.detail .author-info .author{
+    margin-right:10px;
+}
+.detail .content img{
+    display: block;
+}
+.detail .like{
+ color:#EA6F5A;
+}
+.detail .like .like-left{
+    width:200px;
+    height:40px;
+    line-height:40px;
+    border-radius:4px;
+    border:1px solid #EA6F5A;
+    font-size:26px;
+}
+.detail .like .like-left .iconfont{
+    font-size:26px;
+}

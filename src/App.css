@@ -1,0 +1,67 @@
+body{
+  background: url(./common/image/bg.jpg) 0px 0px repeat rgb(229, 230, 208);
+  height:100%;
+}
+#root{
+   height:100%;
+}
+.App{
+    min-height:100%;
+    position: relative;
+}
+.w-1200{
+  width:1200px;
+  margin:0 auto;
+}
+header{
+  background:#000;
+  height:60px;
+  line-height:60px;
+  color:#fff;
+}
+header img{
+  width:48%;
+}
+nav{
+    height:40px;
+    line-height:40px;
+    background:url(./common/image/nav_bg.gif) repeat-x;
+}
+nav li{
+    float:left;
+    padding-right:20px;
+}
+nav li a{
+    color:#fff;
+    height:100%;
+    display: block;
+    font-size:16px;
+}
+nav li a:visited{
+     color:#fff;
+     text-decoration: none;
+ }
+nav li a:active{
+    color:#fff;
+    text-decoration: none;
+}
+section{
+    padding-bottom:100px;
+}
+footer{
+  height:80px;
+  background:#000;
+  color:#fff;
+  text-align:center;
+  line-height:80px;
+  margin-top:80px;
+  position:absolute;
+  width:100%;
+  bottom:0;
+}
+.login-out{
+    padding:10px;
+}
+.head-login a{
+    color:#fff;
+}

@@ -1,0 +1,109 @@
+.eva-input{
+    height:80px;
+    border:1px solid #e74851;
+    padding:10px;
+    outline:none;
+    margin-bottom:10px;
+    border-radius:4px;
+}
+.forme{
+    padding:16px 0 10px;
+    border-bottom:1px solid #e74851;
+    font-size:20px;
+    font-weight: bold;
+    margin-bottom:20px;
+}
+.express-msg{
+    margin-bottom: 20px;
+    padding:10px 0;
+}
+.p-cont{
+}
+.express-msg .avatar{
+    margin-right:10px;
+}
+.p-cont .submit-msg{
+    text-align:right;
+}
+.total-msg{
+    color:#e74851;
+    margin:20px 0;
+    border-bottom:1px solid #e74851;
+    text-align:right;
+    position:relative;
+    padding-top:10px;
+}
+.total-msg-t{
+    height:32px;
+    line-height:32px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left:20px;
+}
+.total-msg .leave-msg{
+    position:absolute;
+    display: inline-block;
+    height: 33px;
+    width:50px;
+    text-align:center;
+    line-height:33px;
+    left:0;
+    background: url(../../common/image/bg.jpg) 0px 0px repeat rgb(229, 230, 208);
+    border:1px solid #e74851;
+    border-bottom:none;
+    border-top-right-radius:6px;
+    border-top-left-radius:6px;
+    font-size:16px;
+}
+.msg-wrapper .msg-list{
+    margin-left:80px;
+    border: 1px solid #ccc;
+    border-radius:4px;
+    padding:10px;
+    position:relative;
+    background:#fbfdfb;
+}
+.msg-wrapper li{
+    margin-bottom:20px;
+}
+.msg-wrapper .msg-list:after{
+    content: '';
+    position:absolute;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #ccc;
+    border-bottom: 10px solid transparent;
+    left:-10px;
+    top:10px;
+    z-index: 9;
+}
+.msg-wrapper .msg-list:before{
+    content: '';
+    position:absolute;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #fbfdfb;
+    border-bottom: 10px solid transparent;
+    left:-9px;
+    top:10px;
+    z-index: 10;
+}
+.msg-wrapper .msg-list .msg-desc{
+    font-size:16px;
+}
+.msg-wrapper .msg-list .msg-intro{
+    color:#666;
+}
+.msg-wrapper .msg-list .msg-intro .name{
+    margin-right:10px;
+}
+.msg-wrapper .msg-list .msg-intro .back-msg{
+    color:blue;
+    margin-left:10px;
+    cursor: pointer;
+}
+.emoj{
+    position:relative;
+}
+.emoj .emoj-accept{
+    position:absolute;top:30px;left:0;
+    z-index: 99;
+}
