@@ -42,3 +42,36 @@ export const lookReply = (params) => {
         return res.data
     })
 }
+// 个人推荐
+export const recommand = (params) => {
+    return axios.get('http://127.0.0.1:9999/web/recommand',{params:params},{ headers: { 'Content-Type': 'application/json' } }).then(res => {
+        return res.data
+    })
+}
+// 最新文章
+export const newestArticles = (params) => {
+    return axios.get('http://127.0.0.1:9999/web/newestArticles',{params:params},{ headers: { 'Content-Type': 'application/json' } }).then(res => {
+        return res.data
+    })
+}
+// 文章详情
+export const articleDetail = (params) => {
+    return axios.get('http://127.0.0.1:9999/web/articleDetail',{params:params},{ headers: { 'Content-Type': 'application/json' } }).then(res => {
+        return res.data
+    })
+}
+// 喜欢
+export const isLike = (params) => {
+    return axios.get('http://127.0.0.1:9999/web/articleLike',{params:params},{ headers: { 'Content-Type': 'application/json' } }).then(res => {
+        return res.data
+    })
+}
+// 收藏
+export const isCollect = (params) => {
+    return axios.get('http://127.0.0.1:9999/web/articleCollect',{params:params},{ headers: { 'Content-Type': 'application/json' } }).then(res => {
+        return res.data
+    })
+}
+
+
+

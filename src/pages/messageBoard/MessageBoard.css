@@ -17,7 +17,14 @@
     margin-bottom: 20px;
     padding:10px 0;
 }
-.p-cont{
+.msg-list .p-cont{
+    height: 0;
+    overflow:hidden;
+    transition: all 2s linear;
+}
+.msg-list .hShow{
+    height: auto;
+    transition: height 2s linear;
 }
 .express-msg .avatar{
     margin-right:10px;
@@ -106,4 +113,13 @@
 .emoj .emoj-accept{
     position:absolute;top:30px;left:0;
     z-index: 99;
+}
+.msg-wrapper .reply_1{
+    color: #CD5B45;
+}
+.msg-wrapper .reply_1 .time{
+    margin-left:10px;
+}
+.msg-wrapper .reply-me{
+    margin: 0 10px;
 }

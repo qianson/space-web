@@ -4,18 +4,47 @@ import CommonRight from '../../components/CommonRight'
 import banner1 from '../../common/image/banner1.jpg';
 import banner2 from '../../common/image/banner2.jpg';
 import banner3 from '../../common/image/banner3.jpg';
+import {recommand, newestArticles, isCollect} from "../../apis/api";
 import { Carousel } from 'antd';
+import {dateFormat} from "../../utils/utils";
+import {Icon} from 'antd';
 class Home extends Component {
     constructor (props,context) {
         console.log(props)
         console.log(context)
         super(props,context)
+        this.state={
+            recommandList: [],
+            newestList: []
+        }
         this.goRead = this.goRead.bind(this)
     }
     // public contextTypes = {
     //     router: React.PropTypes.object
     // }
-    goRead () {
+    componentWillMount = () => {
+        this.getRecommand()
+        this.getNewest()
+    };
+    getRecommand = () => {
+        recommand({}).then(res => {
+            this.setState({
+                recommandList: res.data
+            })
+        }).catch(err => {
+            console.log(err)
+        })
+    };
+    getNewest = () => {
+        newestArticles({}).then(res => {
+            this.setState({
+                newestList: res.data
+            })
+        }).catch(err => {
+            console.log(err)
+        })
+    };
+    goRead (id) {
         console.log(this.props)
         // console.log(this.props)
         // this.props.history.push({
@@ -27,18 +56,47 @@ class Home extends Component {
         this.props.history.push({
             pathname: 'detail',
             state: {
-                name: 'xiaohe'
+                id: id
             }
         })
         // this.context.router.push('detail')
     };
     render () {
+        const {recommandList,newestList} = this.state
         const numbers = [banner1,banner2,banner3]
         const listItems = numbers.map((pic) =>
             <div key={pic.toString()}>
                 <img src={pic} alt=""/>
             </div>
         );
+        const recommandElem = recommandList.map((item) => {
+           return <li onClick={() => this.goRead(item.id)} key={item.id}>
+                <div className="avatar"><img src={item.thumbnailUrl} alt=""/></div>
+                <h5>{item.title}</h5>
+                <p className="intro">{item.summary}</p>
+            </li>
+        })
+        const newestElem = newestList.map((item) => {
+            return  <li>
+                <h5>{item.title}</h5>
+                <div className="cont-wrapper clearfix">
+                    <div className="avatar">
+                        <img src={item.thumbnailUrl} alt=""/>
+                    </div>
+                    <div className="cont-intro">
+                        {item.summary}
+                    </div>
+                </div>
+                <div>
+                    <div className="operate">
+                        <span><i className="icon iconfont icon-techreport-" title="时间"></i> {dateFormat(Number(item.pubTime))}</span>
+                        <span><Icon type="like-o" title="喜欢"/>({item.isLikedNum})</span>
+                        <span><Icon type="heart-o" title="收藏"/>({item.isCollectedNum})</span>
+                        <span className="go-read" onClick={() => this.goRead(item.id)}>去阅读原文>></span>
+                    </div>
+                </div>
+            </li>
+        })
         return (
             <div className="main-home">
                 <div className="banner-wrapper">
@@ -51,181 +109,13 @@ class Home extends Component {
                         <div className="reccomend">
                             <h3>个人推荐</h3>
                             <ul className="reccomend-list clearfix">
-                                <li>
-                                    <div className="avatar"><img src={banner2} alt=""/></div>
-                                    <h5>田园风光</h5>
-                                    <p className="intro">风景很美好很美好很美风风景很美好很美好很美风景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好</p>
-                                </li>
-                                <li>
-                                    <div className="avatar"><img src={banner2} alt=""/></div>
-                                    <h5>田园风光</h5>
-                                    <p className="intro">风景很美好很美好很美风风景很美好很美好很美风景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好</p>
-                                </li>
-                                <li>
-                                    <div className="avatar"><img src={banner2} alt=""/></div>
-                                    <h5>田园风光</h5>
-                                    <p className="intro">风景很美好很美好很美风风景很美好很美好很美风景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好</p>
-                                </li>
-                                <li>
-                                    <div className="avatar"><img src={banner2} alt=""/></div>
-                                    <h5>田园风光</h5>
-                                    <p className="intro">风景很美好很美好很美风风景很美好很美好很美风景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好</p>
-                                </li>
-                                <li>
-                                    <div className="avatar"><img src={banner2} alt=""/></div>
-                                    <h5>田园风光</h5>
-                                    <p className="intro">风景很美好很美好很美风风景很美好很美好很美风景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好</p>
-                                </li>
-                                <li>
-                                    <div className="avatar"><img src={banner2} alt=""/></div>
-                                    <h5>田园风光</h5>
-                                    <p className="intro">风景很美好很美好很美风风景很美好很美好很美风景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好景很美好很美好很美好很美好风景很美好很美好很美好很美好好很美好</p>
-                                </li>
+                                {recommandElem}
                             </ul>
                         </div>
                         <div className="newest">
                             <h3>最新文章</h3>
                             <ul className="newest-list">
-                                <li>
-                                    <h5>关于react-router的一些心得</h5>
-                                    <div className="cont-wrapper clearfix">
-                                        <div className="avatar">
-                                            <img src={banner3} alt=""/>
-                                        </div>
-                                        <div className="cont-intro">
-                                            这嘎嘎时间格拉斯见过啥这嘎嘎时间格拉斯见过啥价过来佳乐国际垃圾蛋糕拉萨寄过来过来加了个家电连接公司垃圾管理时间啊拉杆价格了就是了几个拉萨的价格拉萨寄过来佳乐国际垃圾蛋糕拉萨寄过来加了个家电连接公司垃圾管理时间啊拉杆夹国家国家
-                                        </div>
-                                    </div>
-                                    <div>
-                                    <div className="operate">
-                                        <span><i className="icon iconfont icon-techreport-" title="时间"></i> 2018-04-21</span>
-                                        <span><i className="icon iconfont icon-pinglun" title="评论"></i>(0)</span>
-                                        <span><i className="icon iconfont icon-zan1" title="赞"></i>(0)</span>
-                                        <span><i className="icon iconfont icon-shoucang"></i>(0)</span>
-                                        <span className="go-read" onClick={this.goRead}>去阅读原文>></span>
-                                    </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <h5>关于react-router的一些心得</h5>
-                                    <div className="cont-wrapper clearfix">
-                                        <div className="avatar">
-                                            <img src={banner3} alt=""/>
-                                        </div>
-                                        <div className="cont-intro">
-                                            这嘎嘎时间格拉斯见过啥这嘎嘎时间格拉斯见过啥价过来佳乐国际垃圾蛋糕拉萨寄过来过来加了个家电连接公司垃圾管理时间啊拉杆价格了就是了几个拉萨的价格拉萨寄过来佳乐国际垃圾蛋糕拉萨寄过来加了个家电连接公司垃圾管理时间啊拉杆夹国家国家
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="operate">
-                                            <span><i className="icon iconfont icon-techreport-" title="时间"></i> 2018-04-21</span>
-                                            <span><i className="icon iconfont icon-pinglun" title="评论"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-zan1" title="赞"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-shoucang" title="收藏"></i>(0)</span>
-                                            <span className="go-read" onClick={this.goRead}>去阅读原文>></span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <h5>关于react-router的一些心得</h5>
-                                    <div className="cont-wrapper clearfix">
-                                        <div className="avatar">
-                                            <img src={banner3} alt=""/>
-                                        </div>
-                                        <div className="cont-intro">
-                                            这嘎嘎时间格拉斯见过啥这嘎嘎时间格拉斯见过啥价过来佳乐国际垃圾蛋糕拉萨寄过来过来加了个家电连接公司垃圾管理时间啊拉杆价格了就是了几个拉萨的价格拉萨寄过来佳乐国际垃圾蛋糕拉萨寄过来加了个家电连接公司垃圾管理时间啊拉杆夹国家国家
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="operate">
-                                            <span><i className="icon iconfont icon-techreport-" title="时间"></i> 2018-04-21</span>
-                                            <span><i className="icon iconfont icon-pinglun" title="评论"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-zan1" title="赞"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-shoucang"></i>(0)</span>
-                                            <span className="go-read">去阅读原文>></span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <h5>关于react-router的一些心得</h5>
-                                    <div className="cont-wrapper clearfix">
-                                        <div className="avatar">
-                                            <img src={banner3} alt=""/>
-                                        </div>
-                                        <div className="cont-intro">
-                                            这嘎嘎时间格拉斯见过啥这嘎嘎时间格拉斯见过啥价过来佳乐国际垃圾蛋糕拉萨寄过来过来加了个家电连接公司垃圾管理时间啊拉杆价格了就是了几个拉萨的价格拉萨寄过来佳乐国际垃圾蛋糕拉萨寄过来加了个家电连接公司垃圾管理时间啊拉杆夹国家国家
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="operate">
-                                            <span><i className="icon iconfont icon-techreport-" title="时间"></i> 2018-04-21</span>
-                                            <span><i className="icon iconfont icon-pinglun" title="评论"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-zan1" title="赞"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-shoucang"></i>(0)</span>
-                                            <span className="go-read">去阅读原文>></span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <h5>关于react-router的一些心得</h5>
-                                    <div className="cont-wrapper clearfix">
-                                        <div className="avatar">
-                                            <img src={banner3} alt=""/>
-                                        </div>
-                                        <div className="cont-intro">
-                                            这嘎嘎时间格拉斯见过啥这嘎嘎时间格拉斯见过啥价过来佳乐国际垃圾蛋糕拉萨寄过来过来加了个家电连接公司垃圾管理时间啊拉杆价格了就是了几个拉萨的价格拉萨寄过来佳乐国际垃圾蛋糕拉萨寄过来加了个家电连接公司垃圾管理时间啊拉杆夹国家国家
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="operate">
-                                            <span><i className="icon iconfont icon-techreport-" title="时间"></i> 2018-04-21</span>
-                                            <span><i className="icon iconfont icon-pinglun" title="评论"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-zan1" title="赞"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-shoucang"></i>(0)</span>
-                                            <span className="go-read">去阅读原文>></span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <h5>关于react-router的一些心得</h5>
-                                    <div className="cont-wrapper clearfix">
-                                        <div className="avatar">
-                                            <img src={banner3} alt=""/>
-                                        </div>
-                                        <div className="cont-intro">
-                                            这嘎嘎时间格拉斯见过啥这嘎嘎时间格拉斯见过啥价过来佳乐国际垃圾蛋糕拉萨寄过来过来加了个家电连接公司垃圾管理时间啊拉杆价格了就是了几个拉萨的价格拉萨寄过来佳乐国际垃圾蛋糕拉萨寄过来加了个家电连接公司垃圾管理时间啊拉杆夹国家国家
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="operate">
-                                            <span><i className="icon iconfont icon-techreport-" title="时间"></i> 2018-04-21</span>
-                                            <span><i className="icon iconfont icon-pinglun" title="评论"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-zan1" title="赞"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-shoucang"></i>(0)</span>
-                                            <span className="go-read">去阅读原文>></span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <h5>关于react-router的一些心得</h5>
-                                    <div className="cont-wrapper clearfix">
-                                        <div className="avatar">
-                                            <img src={banner3} alt=""/>
-                                        </div>
-                                        <div className="cont-intro">
-                                            这嘎嘎时间格拉斯见过啥这嘎嘎时间格拉斯见过啥价过来佳乐国际垃圾蛋糕拉萨寄过来过来加了个家电连接公司垃圾管理时间啊拉杆价格了就是了几个拉萨的价格拉萨寄过来佳乐国际垃圾蛋糕拉萨寄过来加了个家电连接公司垃圾管理时间啊拉杆夹国家国家
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="operate">
-                                            <span><i className="icon iconfont icon-techreport-" title="时间"></i> 2018-04-21</span>
-                                            <span><i className="icon iconfont icon-pinglun" title="评论"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-zan1" title="赞"></i>(0)</span>
-                                            <span><i className="icon iconfont icon-shoucang"></i>(0)</span>
-                                            <span className="go-read">去阅读原文>></span>
-                                        </div>
-                                    </div>
-                                </li>
+                                {newestElem}
                             </ul>
                         </div>
                     </div>

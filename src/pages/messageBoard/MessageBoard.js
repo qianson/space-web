@@ -13,7 +13,8 @@ class MessageBoard extends Component {
             selectId: '',
             emoj: false,
             reply:false,
-            totalMessage: 0
+            totalMessage: 0,
+            replyToggles: []
         }
     };
     componentWillMount = () => {
@@ -21,10 +22,15 @@ class MessageBoard extends Component {
     };
     getMsgList = () => {
         getLeaveMessageList({}).then(res => {
-                this.setState({
-                    messageList: res.data,
-                    totalMessage: res.data.length
-                })
+            let arr = [];
+            for (let i = 0;i<res.data.length;i++){
+                arr.push(false)
+            }
+            this.setState({
+                messageList: res.data,
+                totalMessage: res.data.length,
+                replyToggles: arr
+            })
             }
         ).catch(err => {
             console.log(err)
@@ -65,11 +71,11 @@ class MessageBoard extends Component {
             emoj: !this.state.emoj
         })
     };
-    replyClick =(item) => {
-        item.toggleReply = !item.toggleReply
+    replyClick = (item,index) => {
+        this.state.replyToggles[index] = !this.state.replyToggles[index];
         this.setState({
-            reply: !this.state.reply,
-            selectId: item.id,
+            replyToggles: this.state.replyToggles,
+            selectId: item.id
         })
     };
     replyEmoj =(data) => {
@@ -90,9 +96,17 @@ class MessageBoard extends Component {
         })
     };
     render () {
-        const {emojShow,selectId,emoj,reply,totalMessage} = this.state;
-        const elemLi = this.state.messageList.map((item) =>　{
-            item.toggleReply = false
+        const {replyToggles,emojShow,selectId,emoj,reply,totalMessage} = this.state;
+        const elemLi = this.state.messageList.map((item,index) =>　{
+            const replyElem= item.replyList.map((replyitem) => {
+                return <li key={replyitem.id}>
+                    <div className="reply_1">
+                    <span>何育骞</span><span className="time">{dateFormat(Number(item.messageTime))}</span><span className="reply-me">回复</span><span>{replyitem.userName}</span>
+                    </div>
+                    <div dangerouslySetInnerHTML={{__html: replyitem.leaveMessage}} className="reply_2">
+                    </div>
+                </li>
+            });
            return <li className="clearfix" key={item.id}>
                 <div className="user-avatar fl"><Avatar shape="square" size="large" icon="user"/></div>
                 <div className="msg-list">
@@ -100,9 +114,9 @@ class MessageBoard extends Component {
                     <div className="msg-intro">
                         <span className="name">{item.userName}</span>
                         <span className="time">{dateFormat(Number(item.messageTime))}</span>
-                        <span className="back-msg" onClick={()=>this.replyClick(item)}>回复</span>
+                        <span className="back-msg" onClick={()=>this.replyClick(item,index)}>回复</span>
                     </div>
-                    {(item.toggleReply&&selectId===item.id)&&<div className="p-cont">
+                    {(replyToggles[index]&&selectId === item.id)&&<div className={replyToggles[index] ? 'hShow':'p-cont'}>
                         <p contentEditable={true} className="eva-input" ref="emojinput"></p>
                         <div className="submit-msg clearfix">
                             <span className="fl">
@@ -118,6 +132,9 @@ class MessageBoard extends Component {
                             </span>
                         </div>
                     </div>}
+                    <ul className="reply-list">
+                        {replyElem}
+                    </ul>
                 </div>
             </li>
         });

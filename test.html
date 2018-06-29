@@ -6,18 +6,67 @@
 <body>
 
 <script>
-let str = `{"amountCash":0.0,"authId":"590399dcbc4f44ccb484ca053dcf8a71","carMode":"0","carNum":"京B56656","carType":2,"cardNo\":\"6f2074a2cd0f4c2ba2bf56e3b2d5ecf2\",\"carportCode\":
-\"CSYB005\",\"carportType\":1,\"cash\":0.0,\"channelId\":\"ed35943468eb4ea4b297ccb0f4c100ef
-\",\"channelIp\":\"SERVER2-PC\",\"channelName\":\"海康入口\",\"credenceType\":7,\"deviceCode
-\":\"1001200554c415f38bc5\",\"direct\":0,\"fastdfsHttpAddress\":\"http://192.168.0.246:8888/
-\",\"favorableAmount\":0.0,\"inTime\":\"2018-06-19 16:50:36\",\"occupyFlag\":0,\"openWay\":1,
-\"ownerId\":\"6f2074a2cd0f4c2ba2bf56e3b2d5ecf2\",\"ownerName\":\"超祥\",\"parkCode\":\"111\",
-\"passType\":0,\"recordId\":\"\",\"recordInImage\":
-\"group1/M00/4F/36/wKgA9lsow6iALPusAARZUHT2StQ645.jpg\",\"ruleId\":
-\"ee639a7102e64aeba9f215c0598b1ba9\",\"ruleName\":\"海康月报规则\"}`
-    str=str.replace(/\\/g,'')
-    console.log(str)
-
+    var a = {
+        prk_inout_record_messge:
+            {
+                "mountCsh":0.0,
+                "crMode":"0",
+                "crNum":"",
+                "crType":2,
+                "crportType":0,
+                "csh":0.0,
+                "chnnelId":"ed35943468eb4ea4b297ccb0f4c100ef",
+                "chnnelIp":"SERVER2-PC",
+                "chnnelNme":"海康入口",
+                "credenceType":5,
+                "deviceCode":"1001200554c415f38bc5",
+                "direct":0,
+                "fstdfsHttpAddress":"http://192.168.0.246:8888/",
+                "fvorbleAmount":0.0,
+                "inTime":"2018-06-20 16:36:47",
+                "occupyFlg":0,
+                "openWy":2,
+                "ownerNme":"",
+                "prkCode":"111",
+                "pssType":0,
+                "recordId":"",
+                "recordInImge":""
+            }
+    }
+    var b = {
+        park_inout_record_message:
+            {
+                amountCash: 0.0,
+                authId: '590399dcbc4f44ccb484ca053dcf8a71',
+                carMode:'0',
+                carNum: '',
+                carType: 2,
+                cardNo: '6f2074a2cd0f4c2ba2bf56e3b2d5ecf2',
+                carportCode: 'CSYB005',
+                carportType: 1,
+                cash: 0.0,
+                channelId: 'ed35943468eb4ea4b297ccb0f4c100ef',
+                channelIp: 'SERVER2-PC',
+                channelName: '海康入口',
+                credenceType: 7,
+                deviceCode: '1001200554c415f38bc5',
+                direct: 0,
+                fastdfsHttpAddress: 'http://192.168.0.246:8888/',
+                favorableAmount: 0.0,
+                inTime: '2018-06-20 16:37:07',
+                occupyFlag: 0,
+                openWay: 1,
+                ownerId: '6f2074a2cd0f4c2ba2bf56e3b2d5ecf2',
+                ownerName: '超祥',
+                parkCode: '111',
+                passType: 0,
+                recordId: '',
+                recordInImage: '',
+                ruleId: 'ee639a7102e64aeba9f215c0598b1ba9',
+                ruleName: '海康月报规则'
+            }
+    }
+    alert(b.park_inout_record_message.openWay === 2)
 </script>
 </body>
 </html>

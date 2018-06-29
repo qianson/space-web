@@ -2,53 +2,91 @@ import React, { Component } from 'react';
 import './Detail.css';
 import banner2 from '../../common/image/banner2.jpg';
 import banner3 from '../../common/image/banner3.jpg';
+import {articleDetail,isLike,isCollect} from '../../apis/api';
+import {dateFormat} from "../../utils/utils";
+import {Icon,message} from 'antd';
 class Detail extends Component {
     constructor () {
         super(...arguments)
-        console.log(this.props.params)
+        console.log(this.props)
+        this.state={
+            articleId: this.props.location.state.id,
+            detailData: {}
+        }
+    }
+    componentWillMount () {
+        this.getDetail()
+    }
+    getDetail = () => {
+        let userId = JSON.parse(sessionStorage.getItem('webUserInfo')).userId;
+        articleDetail({id:this.state.articleId,userId:userId}).then(res => {
+            this.setState({
+                detailData: res.data
+            })
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+    artLike = (like) => {
+        console.log(like)
+        if (like === 1){
+            message.warning('您已点赞过!')
+        } else {
+            let userId = JSON.parse(sessionStorage.getItem('webUserInfo')).userId;
+            let articleId = this.state.articleId;
+            let isLiked = 1;
+            let param = {
+                userId: userId,
+                articleId: articleId,
+                isLiked: isLiked
+            }
+            isLike(param).then(res => {
+                this.getDetail()
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+    }
+    artCollect = (collect) => {
+        if (collect === 1) {
+            message.warning('您已收藏!')
+        } else {
+            let userId = JSON.parse(sessionStorage.getItem('webUserInfo')).userId;
+            let articleId = this.state.articleId;
+            let isCollected = 1;
+            let param = {
+                userId: userId,
+                articleId: articleId,
+                isCollected: isCollected
+            }
+            isCollect(param).then(res => {
+                this.getDetail()
+            }).catch(err => {
+                console.log(err)
+            })
+        }
     }
     render () {
+        const {detailData} = this.state;
         return (
             <div className="detail">
-                <h3>这是测试css的</h3>
+                <h3>{detailData.title}</h3>
                 <p className="author-info">
-                    <span className="author">作者：何育骞</span>
-                    <span>2018年5月4日</span>
+                    <span className="author">作者：{detailData.creater}</span>
+                    <span>{dateFormat(Number(detailData.pubTime))}</span>
                 </p>
-                <div className="content">
-                    csssadgksaglsgjsagj; sagj;sag sgj;gj;sajg;adgj sgjasjgsajgjskjgsajgjsagjsgjjgljhlajh jhajd hdajh lkadjhj djah jda hdjh adjh j j
-                    sdgasgjaskgjksjglsajgsljglsdjgklsjgjlsagjsgjskgjksjgsj a奥斯卡大家感受是结果来看撒娇拉杆夹估价师老顾客介绍卡了解过傻了艾灸哥拉斯几个撒就
-                    水果沙拉感觉丧假官商勾结啥结果拉萨讲故事进公司国家讲故事啦空间干啥就
-                    送给大家关键时刻国家公私兼顾公私兼顾算了经过两三件工商局干撒寄过来撒吉林省爱就敢送几个撒加上就够了啊数据库 a
-                    时发生纠纷交手机费搜几个事见过啥感觉萨拉关键是垃圾干撒够了卡萨丁几个撒个娇杀了开工建设了看过十几个时间客观上
-                    撒旦法撒个娇雷克萨关键是离开就快睡觉赶紧睡了开关机估价师留个加上
-                    阿水哥施工队
-                    <img src={banner2} alt=""/>
-                    sfsafj slajg这是撒干撒就赶快沮丧就拉萨的价格阿济格拉深加工加上撒个娇死垃圾蛋糕卡手机关机按时国家是爱干净撒个娇时间干啥就十大歌手垃圾啊施工记录
-                    闪光点撒垃圾拉萨寄过来沮丧刷卡机公司进口高级杀了驾驶感觉啥结果杀几个了撒个撒个娇是沮丧沮丧进来撒解决升龙国际桑啊十几个
-                    撒旦法撒解放路上几个垃圾死了国家科技干啥就过来撒娇刚拉屎公司垃圾干啥类九流三教刚拉屎干啥就噶事
-                    士大夫撒拉飞机撒放散阀刘三姐分离设计福利撒酒疯连接撒飞机撒附近杀令肌肤撒酒疯撒浪费就是垃圾费时间分散剂分散剂分散剂是j
-                    撒旦法撒结果拉数据过来撒娇观看撒娇过傻了解决撒娇垃圾股啊十几个了就散了赶紧睡了结果拉数据刚拉屎结果拉屎结果拉几个噶江苏省阿几个撒就估价
-                    说过来看撒娇过卡死几个傻瓜连接撒了个佳乐国际爱空间索拉卡的感觉刘三姐桂林市科技馆阿山烤鸡过来看撒娇过拉深加工克里斯解决路撒大哥撒
-                    沙发司法局萨拉将发生结束啦拉萨加就
-                    <img src={banner3} alt=""/>
-                    sdflksa jljj sg jsagj agj adjg lajg jagj
-                </div>
-                <div className="like">
-                    <div className="like-left">
-                        <span><i className="icon iconfont icon-zan1" title="赞"></i></span>
-                        <span>1</span>
-                    </div>
-                    <div className="like-right">
+                <div className="content" dangerouslySetInnerHTML={{__html: detailData.content}}>
 
+                </div>
+                <div className="operate">
+                    <div className="like o-item" onClick={() => {this.artLike(detailData.isLiked)}}>
+                        <Icon type="like-o" title="喜欢" className={`isLiked ${detailData.isLiked ===1?'likeActive': ''}`}/>
+                        <span className="diss-num">{detailData.isLikedNum}</span>
                     </div>
-                </div>
-                <div className="collect">
-                    <span><i className="icon iconfont icon-shoucang" title="收藏"></i></span>
-                    <span>1</span>
-                </div>
-                <div className="evaluate">
-                    <span>评论</span>
+                    <div className="collect o-item" onClick={() => {this.artCollect(detailData.isCollected)}}>
+                        <Icon type="heart-o" title="收藏" className={`isCollected ${detailData.isCollected ===1?'collectActive': ''}`}/>
+                        <span className="diss-num">{detailData.isCollectedNum}</span>
+                    </div>
                 </div>
             </div>
         )

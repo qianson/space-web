@@ -36,6 +36,7 @@
     box-sizing:border-box;
     background:#fff;
     margin-bottom:10px;
+    height:340px;
 }
 .main-home .reccomend-list li:hover img{
     transform: scale(1.5);

@@ -1,6 +1,9 @@
 .detail h3{
     text-align:center;
     margin-bottom:10px;
+    margin-top:30px;
+    font-weight: 700;
+    font-size: 30px;
 }
 .detail .author-info{
     color:#666;
@@ -13,17 +16,32 @@
 .detail .content img{
     display: block;
 }
+.detail .operate{
+    text-align:center;
+    margin-top:20px;
+}
+.detail .operate .o-item{
+    display: inline-block;
+    color:#fff;
+    text-align:center;
+}
+.detail .operate .o-item i{
+    font-size: 100px;
+}
+.detail .operate .o-item span{
+    display: block;
+    font-size: 30px;
+    color:mediumvioletred;
+}
 .detail .like{
- color:#EA6F5A;
+    margin-right:30px;
 }
-.detail .like .like-left{
-    width:200px;
-    height:40px;
-    line-height:40px;
-    border-radius:4px;
-    border:1px solid #EA6F5A;
-    font-size:26px;
+.detail .collect{
+
 }
-.detail .like .like-left .iconfont{
-    font-size:26px;
+.detail .diss-num{
+
+}
+.likeActive,.collectActive{
+    color:#f78585;
 }
