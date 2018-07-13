@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import asyncComponent from '../utils/asyncComponent';
-
 // import enterTainment from '../pages/enterTainment/enterTainment'
 const Home = asyncComponent(() => import('../pages/home/Home'));
 const EnterTainment = asyncComponent(() => import('../pages/enterTainment/EnterTainment'));

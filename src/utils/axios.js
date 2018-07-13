@@ -2,6 +2,8 @@ import Axios from 'axios'
 const axios = Axios.create({
     timeout: 6000
 })
+Axios.defaults.headers['Cache-Control'] = 'no-cache'
+Axios.defaults.headers['Pragma'] = 'no-cache'
 axios.interceptors.request.use(config => {
         console.log(config)
         let userInfo = JSON.parse(sessionStorage.getItem('webUserInfo'))

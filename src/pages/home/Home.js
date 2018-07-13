@@ -4,10 +4,13 @@ import CommonRight from '../../components/CommonRight'
 import banner1 from '../../common/image/banner1.jpg';
 import banner2 from '../../common/image/banner2.jpg';
 import banner3 from '../../common/image/banner3.jpg';
-import {recommand, newestArticles, isCollect} from "../../apis/api";
+import thumbnail from '../../common/image/thumbnail.jpg';
+import thumbnail2 from '../../common/image/thumbnail2.jpg';
+import {recommand, getArticles, isCollect} from "../../apis/api";
 import { Carousel } from 'antd';
 import {dateFormat} from "../../utils/utils";
 import {Icon} from 'antd';
+import { HashRouter, withRouter } from 'react-router-dom';
 class Home extends Component {
     constructor (props,context) {
         console.log(props)
@@ -36,7 +39,7 @@ class Home extends Component {
         })
     };
     getNewest = () => {
-        newestArticles({}).then(res => {
+        getArticles({typeCode:1}).then(res => { // code 1 最新
             this.setState({
                 newestList: res.data
             })
@@ -55,7 +58,7 @@ class Home extends Component {
         // })
         this.props.history.push({
             pathname: 'detail',
-            state: {
+            query: {
                 id: id
             }
         })
@@ -71,17 +74,17 @@ class Home extends Component {
         );
         const recommandElem = recommandList.map((item) => {
            return <li onClick={() => this.goRead(item.id)} key={item.id}>
-                <div className="avatar"><img src={item.thumbnailUrl} alt=""/></div>
+                <div className="avatar"><img src={thumbnail} alt=""/></div>
                 <h5>{item.title}</h5>
                 <p className="intro">{item.summary}</p>
             </li>
         })
         const newestElem = newestList.map((item) => {
-            return  <li>
+            return  <li key={item.id}>
                 <h5>{item.title}</h5>
                 <div className="cont-wrapper clearfix">
                     <div className="avatar">
-                        <img src={item.thumbnailUrl} alt=""/>
+                        <img src={thumbnail2} alt=""/>
                     </div>
                     <div className="cont-intro">
                         {item.summary}
@@ -126,4 +129,4 @@ class Home extends Component {
         )
     }
 }
-export default Home;
+export default withRouter(Home);

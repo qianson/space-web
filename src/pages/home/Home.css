@@ -1,5 +1,5 @@
 .banner-wrapper{
-    height:300px;
+    height:400px;
     overflow:hidden;
 }
 .banner-wrapper .banner-list{
@@ -10,13 +10,15 @@
 
 }
 .banner-wrapper img{
-    height:300px;
+    height:400px;
     width:100%;
 }
 .main-home .content h3{
     border-bottom:3px solid #7D26CD;
     padding: 10px;
     margin-bottom:10px;
+    font-weight: 700;
+    font-size:20px;
 }
 .main-home .left{
     width:900px;

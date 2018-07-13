@@ -10,11 +10,12 @@ class Detail extends Component {
         super(...arguments)
         console.log(this.props)
         this.state={
-            articleId: this.props.location.state.id,
+            articleId: this.props.location.query.id,
             detailData: {}
         }
     }
     componentWillMount () {
+        console.log(this.props.location.query,'111111111111111111111111111111')
         this.getDetail()
     }
     getDetail = () => {

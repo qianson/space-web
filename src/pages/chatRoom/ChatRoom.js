@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './ChatRoom.css';
 import {Icon, Button} from 'antd';
 import io from 'socket.io-client';
-let socket = io.connect('localhost:9999');
+let socket = io.connect('ws://localhost:9999');
 // import PropTypes from "prop-types";
 // import emitter from '../../utils/event'
 class ChatRoom extends Component {

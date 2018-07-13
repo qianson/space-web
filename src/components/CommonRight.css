@@ -1,0 +1,59 @@
+.common-right{
+    padding-top:40px;
+}
+.common-right h5{
+    font-weight: 700;
+    font-size:16px;
+    margin:10px 0;
+    border-left: 4px solid #ca0c16;
+    padding-left:10px;
+}
+.common-right .data-list li{
+    padding: 6px;
+}
+.common-right .part{
+    background:#fff;
+    padding:20px;
+    margin-bottom: 20px;
+}
+.common-right .f-links li{
+    display: inline-block;
+    margin:10px;
+}
+.common-right .f-links li a{
+    padding: 10px;
+    background:#FE4365;
+    color:#fff;
+    border-radius: 4px;
+    display: block;
+}
+.common-right .newest-eva{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-bottom:10px;
+    text-overflow:ellipsis;
+}
+.common-right .like-item{
+    margin-bottom:10px;
+}
+.common-right .like-item div:nth-of-type(1){
+    margin-bottom:6px;
+    color:#009a61;
+    cursor: pointer;
+}
+.common-right .like-item div:nth-of-type(2){
+    padding-left:16px;
+}
+.common-right .like-item .like-num{
+    margin: 6px;
+    font-weight: 700;
+}
+/*.common-right .newest-eva{position: relative; line-height: 20px; max-height:44px;overflow: hidden;}*/
+/*.common-right .newest-eva::after{content: "..."; position: absolute; bottom: 0; right: 0; padding-left: 40px;*/
+    /*background: -webkit-linear-gradient(left, transparent, #fff 55%);*/
+    /*background: -o-linear-gradient(right, transparent, #fff 55%);*/
+    /*background: -moz-linear-gradient(right, transparent, #fff 55%);*/
+    /*background: linear-gradient(to right, transparent, #fff 55%);*/
+/*}*/

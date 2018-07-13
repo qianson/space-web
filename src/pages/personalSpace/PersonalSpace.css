@@ -1,0 +1,26 @@
+.my-collect .image-wrapper{
+    width:270px;
+    height:220px;
+}
+.my-collect .image-wrapper img{
+    height: 100%;
+    width:270px;
+}
+.collect-wrapper h2{
+    padding: 10px 0;
+    font-weight: 700;
+}
+.my-collect li{
+    background:#fff;
+    float:left;
+    margin-right:10px;
+    width:290px;
+    padding: 10px 10px;
+    height: 330px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.my-collect li h5{
+    font-weight: 600;
+    margin: 6px 0;
+}
